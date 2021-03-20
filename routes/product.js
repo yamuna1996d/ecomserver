@@ -6,10 +6,11 @@ const { authCheck, adminCheck } = require("../middlewares/auth");
 
 // controller
 const { create } = require("../controllers/product");
-const { listAll,remove } = require("../controllers/product");
+const { listAll,remove,read } = require("../controllers/product");
 
 // routes
 router.post("/product", authCheck, adminCheck, create);
 router.get("/products/:count", listAll);
 router.delete("/product/:slug",authCheck,adminCheck,remove);
-module.exports = router;
+router.get("/product/:slug",read);
+module.exports = router; 
